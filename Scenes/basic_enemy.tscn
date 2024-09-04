@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://h45jf7xqhim"]
+
+[ext_resource type="Script" path="res://Scripts/basic_enemy.gd" id="1_4f1ta"]
+[ext_resource type="Texture2D" uid="uid://d0ncbnu0m31nj" path="res://assets/basicenemy/tile_0124.png" id="2_1gcmg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sl57u"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_svddr"]
+radius = 6.08276
+
+[node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
+position = Vector2(0, -4)
+collision_layer = 0
+script = ExtResource("1_4f1ta")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_sl57u")
+debug_color = Color(0.595694, 0.479141, 0.6952, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1gcmg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_svddr")
