@@ -11,7 +11,9 @@ radius = 6.08276
 
 [node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(0, -4)
-collision_layer = 0
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
 script = ExtResource("1_4f1ta")
 
 [node name="Area2D" type="Area2D" parent="."]

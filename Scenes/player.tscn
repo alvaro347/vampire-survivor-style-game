@@ -10,6 +10,7 @@ radius = 5.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(0, -8)
 collision_layer = 0
+motion_mode = 1
 script = ExtResource("1_ww3w3")
 
 [node name="AbilityManager" type="Node" parent="."]
