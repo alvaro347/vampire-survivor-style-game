@@ -1,11 +1,13 @@
 extends CharacterBody2D
+class_name Player
+	
 
-const MAX_SPEED = 150
-const ACCELERATION_SMOOTHING = 25
-
+const MAX_SPEED : float = 150
+const ACCELERATION_SMOOTHING : float = 25
+var current_health : float
 
 func _ready() -> void:
-	pass # Replace with function body.
+	current_health = Globals.max_health
 
 
 func _process(delta: float) -> void:
@@ -25,3 +27,14 @@ func get_movement_vector() -> Vector2:
 	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")	# Creates a number from -1 to 1 for x axys
 	var y_movement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")	# Creates a -1 to 1 for y axys
 	return Vector2(x_movement, y_movement)
+
+
+func take_damage(damage: float) -> void:
+	current_health = max(current_health - damage, 0)	# NOTE: Avoids negative values and sets to 0
+	print(current_health)
+	if current_health == 0:
+		died()
+
+
+func died() -> void:
+	queue_free()
