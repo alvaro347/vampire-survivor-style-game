@@ -3,9 +3,11 @@ extends CharacterBody2D
 
 const MAX_SPEED = 40
 var direction : Vector2		# Direction of the enemy
-# @onready var player : Node2D = get_node("/root/Main/Player")
 @onready var player : Node2D = get_tree().get_first_node_in_group("player")
-@export var basic_enemy_damage : float = Globals.enemy_damage.basic_enemy
+@onready var health_component : HealthComponent = $HealthComponent
+@export var health : float = Globals.enemies.basic_enemy.health
+@export var damage: float = Globals.enemies.basic_enemy.damage
+# @onready var player : Node2D = get_node("/root/Main/Player")
 # @onready var player : Node2D = %Player
 # var player = preload("res://Scenes/player.tscn")
 
@@ -40,7 +42,4 @@ func _physics_process(delta: float) -> void:
 
 
 func on_area_entered(ohter_area: Area2D):
-	player.take_damage(basic_enemy_damage)
-	print(basic_enemy_damage)
-	queue_free()
-
+	health_component.take_damage(100)

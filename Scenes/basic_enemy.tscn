@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://h45jf7xqhim"]
+[gd_scene load_steps=7 format=3 uid="uid://h45jf7xqhim"]
 
 [ext_resource type="Script" path="res://Scripts/basic_enemy.gd" id="1_4f1ta"]
 [ext_resource type="Texture2D" uid="uid://d0ncbnu0m31nj" path="res://assets/basicenemy/tile_0124.png" id="2_1gcmg"]
+[ext_resource type="PackedScene" uid="uid://daytigpelgvq6" path="res://Scenes/components/health_component.tscn" id="2_fhmck"]
+[ext_resource type="PackedScene" uid="uid://dey2jnln07lo2" path="res://Scenes/components/vial_drop_component.tscn" id="3_16txx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sl57u"]
 radius = 11.0
@@ -15,6 +17,11 @@ collision_layer = 8
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_4f1ta")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_fhmck")]
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_16txx")]
+health_component = NodePath("../HealthComponent")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

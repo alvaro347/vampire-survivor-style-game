@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://j6612yf2bv74"]
+[gd_scene load_steps=6 format=4 uid="uid://j6612yf2bv74"]
 
 [ext_resource type="PackedScene" uid="uid://c6tjtw2xuuwxh" path="res://Scenes/manager/enemy_manager.tscn" id="1_71mlh"]
 [ext_resource type="PackedScene" uid="uid://cq0mg7ewcsug3" path="res://Scenes/ui/arena_time_ui.tscn" id="1_bccd0"]
 [ext_resource type="PackedScene" uid="uid://cc6b08w57e7ci" path="res://Scenes/player.tscn" id="1_vgmpx"]
 [ext_resource type="TileSet" uid="uid://6swbgl8hbwcb" path="res://resources/tilset.tres" id="2_6u15i"]
 [ext_resource type="Script" path="res://Scripts/expirience_manager.gd" id="2_c6h1k"]
-[ext_resource type="PackedScene" uid="uid://ccen23xmrktq" path="res://Scenes/objects/expirience_vial.tscn" id="5_0mo5m"]
 
 [node name="Main" type="Node"]
 
@@ -29,9 +28,3 @@ position = Vector2(1, -8)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
-
-[node name="ExpirienceVial" parent="." instance=ExtResource("5_0mo5m")]
-position = Vector2(94, 57)
-
-[node name="ExpirienceVial2" parent="." instance=ExtResource("5_0mo5m")]
-position = Vector2(131, 20)
