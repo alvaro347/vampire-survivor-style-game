@@ -14,7 +14,7 @@ var direction : Vector2		# Direction of the enemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Area2D.area_entered.connect(on_area_entered)
+	$HurtBoxComponent.area_entered.connect(on_area_entered)
 	pass # Replace with function body.
 
 
