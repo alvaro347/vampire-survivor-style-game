@@ -6,16 +6,15 @@ var direction : Vector2		# Direction of the enemy
 @onready var player : Node2D = get_tree().get_first_node_in_group("player")
 @onready var health_component : HealthComponent = $HealthComponent
 @export var health : float = Globals.enemies.basic_enemy.health
-@export var damage: float = Globals.enemies.basic_enemy.damage
+# @export var damage: float = Globals.enemies.basic_enemy.damage
 # @onready var player : Node2D = get_node("/root/Main/Player")
 # @onready var player : Node2D = %Player
 # var player = preload("res://Scenes/player.tscn")
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	$HurtBoxComponent.area_entered.connect(on_area_entered)
-	pass # Replace with function body.
+# func _ready() -> void:
+	# $HurtBoxComponent.area_entered.connect(on_area_entered)
+	# pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,5 +40,5 @@ func _physics_process(delta: float) -> void:
 # 	return Vector2.ZERO
 
 
-func on_area_entered(ohter_area: Area2D):
-	health_component.take_damage(100)
+# func on_area_entered(ohter_area: Area2D):
+# 	health_component.take_damage(100)

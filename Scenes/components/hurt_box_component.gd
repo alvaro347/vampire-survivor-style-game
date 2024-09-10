@@ -17,4 +17,4 @@ func on_area_entered(other_area: Area2D) -> void:
 		return
 
 	var hitbox_component: HitBoxComponent = other_area
-	health_component.damage(hitbox_component.damage)
+	health_component.take_damage(hitbox_component.damage)

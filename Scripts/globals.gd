@@ -3,7 +3,7 @@ extends Node
 @export var max_health: float = 100
 @export var enemies = {
 	basic_enemy = {
-		health = 50,
+		health = 10,
 		damage = 5
 	}
 }
