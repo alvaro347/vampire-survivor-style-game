@@ -8,10 +8,10 @@ signal expirience_updated(current_expirience: float, target_expirience: float)
 signal level_up(new_level: int)
 
 
-const TARGET_EXPIRIENCE_GROWTH : float = 5.0
-var current_expirience : float = 0
-var current_level : float = 1.0
-var target_expirience : float = 1
+const TARGET_EXPIRIENCE_GROWTH: float = 5.0
+var current_expirience: float = 0
+var current_level: float = 1.0
+var target_expirience: float = 5
 
 
 func _ready() -> void:

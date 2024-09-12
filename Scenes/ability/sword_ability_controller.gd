@@ -1,7 +1,8 @@
 extends Node
 
 
-const MAX_RANGE : int = 150
+const MAX_RANGE: int = 150
+var base_wait_time: float
 var damage : float = 5.0
 @export var sword_ability : PackedScene
 @onready var player : Node2D = get_tree().get_first_node_in_group("player")
@@ -11,8 +12,9 @@ var damage : float = 5.0
 
 func _ready() -> void:
 	# NOTE: This is creating a signal "timeout" that connects to the function spawn_sword
+	base_wait_time = $SwordTimer.wait_time
 	$SwordTimer.timeout.connect(spawn_sword)
-
+	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 
 # NOTE: Signals can connect to other functions we specify
 func spawn_sword() -> void:
@@ -41,3 +43,13 @@ func spawn_sword() -> void:
 	# NOTE: We can angle towards the enemy this way. (To -> FROM for calculations). Then set the rotation to that value
 	var enemy_direction = enemies[0].global_position - sword_instance.global_position
 	sword_instance.rotation = enemy_direction.angle()
+
+
+# NOTE: Chanage the ability upgrade rate, in this case the sword
+func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
+	if upgrade.id != "sword_rate":
+		return
+	var percent_reduciton = current_upgrades["sword_rate"]["quantity"] * 0.5
+	$SwordTimer.wait_time = base_wait_time * (1 - percent_reduciton)
+	$SwordTimer.start()
+	
