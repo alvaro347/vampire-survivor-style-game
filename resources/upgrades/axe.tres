@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cku5kjfn7g27x"]
+
+[ext_resource type="PackedScene" uid="uid://bf17r6i8cw2xt" path="res://Scenes/ability/axe_ability_controller.tscn" id="1_3w6x7"]
+[ext_resource type="Script" path="res://resources/upgrades/ability.gd" id="2_crcf4"]
+
+[resource]
+script = ExtResource("2_crcf4")
+ability_controller_scene = ExtResource("1_3w6x7")
+id = "axe"
+name = "Axe"
+description = "Increases sword attack rate by 10%."
