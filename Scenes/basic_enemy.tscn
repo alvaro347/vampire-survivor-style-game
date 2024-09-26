@@ -1,10 +1,72 @@
-[gd_scene load_steps=8 format=3 uid="uid://h45jf7xqhim"]
+[gd_scene load_steps=11 format=3 uid="uid://h45jf7xqhim"]
 
 [ext_resource type="Script" path="res://Scripts/basic_enemy.gd" id="1_4f1ta"]
 [ext_resource type="Texture2D" uid="uid://d0ncbnu0m31nj" path="res://assets/basicenemy/tile_0124.png" id="2_1gcmg"]
 [ext_resource type="PackedScene" uid="uid://daytigpelgvq6" path="res://Scenes/components/health_component.tscn" id="2_fhmck"]
 [ext_resource type="PackedScene" uid="uid://dey2jnln07lo2" path="res://Scenes/components/vial_drop_component.tscn" id="3_16txx"]
 [ext_resource type="PackedScene" uid="uid://cou3tjsnumi7" path="res://Scenes/components/hurt_box_component.tscn" id="4_v7q2l"]
+
+[sub_resource type="Animation" id="Animation_sl2yn"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.174533, -0.174533, 0.174533, -0.174533]
+}
+
+[sub_resource type="Animation" id="Animation_f308v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p136x"]
+_data = {
+"RESET": SubResource("Animation_f308v"),
+"walk": SubResource("Animation_sl2yn")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0a03e"]
 radius = 11.0
@@ -19,6 +81,12 @@ collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_4f1ta")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p136x")
+}
+autoplay = "walk"
+
 [node name="HealthComponent" parent="." instance=ExtResource("2_fhmck")]
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_16txx")]
@@ -31,8 +99,12 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("CircleShape2D_0a03e")
 debug_color = Color(0.595694, 0.479141, 0.6952, 0.42)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
 texture = ExtResource("2_1gcmg")
+offset = Vector2(0, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_svddr")
