@@ -52,5 +52,5 @@ func on_timer_timeout():
 
 func on_arena_difficulty_increased(arena_difficulty: int) -> void:
 	var time_off = min((0.1 / 12) * arena_difficulty, 0.7) # Could be replace with an exponential function, with min value
-	print(time_off)
+	# print(time_off)
 	timer.wait_time = base_spawn_time - time_off # Timer stablished in Godot - calculation

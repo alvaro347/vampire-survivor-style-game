@@ -5,7 +5,8 @@ const MAX_SPEED = 40
 var direction : Vector2		# Direction of the enemy
 @onready var player : Node2D = get_tree().get_first_node_in_group("player")
 @onready var health_component : HealthComponent = $HealthComponent
-@export var health : float = Globals.enemies.basic_enemy.health
+@export var health : float = 10.0
+@onready var visuals = $Visuals
 # @export var damage: float = Globals.enemies.basic_enemy.damage
 # @onready var player : Node2D = get_node("/root/Main/Player")
 # @onready var player : Node2D = %Player
@@ -30,6 +31,9 @@ func _physics_process(delta: float) -> void:
 	direction = global_position.direction_to(player.global_position)	# It seems that this vector is normalized
 	velocity = direction * MAX_SPEED
 	move_and_slide()
+	var move_sign = sign(velocity.x)
+	if move_sign != 0:
+		visuals.scale = Vector2(-move_sign, 1)
 
 
 # NOTE: Alternative verison to ge player's position and move towards player

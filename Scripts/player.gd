@@ -40,9 +40,7 @@ func _process(delta: float) -> void:
 	else:
 		animation_player.play("RESET")
 	var move_sign = sign(movement_vector.x)
-	if move_sign == 0:
-		visuals.scale = Vector2.ONE
-	else:
+	if move_sign != 0:
 		visuals.scale = Vector2(move_sign, 1)
 
 
@@ -61,7 +59,6 @@ func check_deal_damage() -> void:
 	else:
 		health_component.take_damage(1)
 		damage_interval_timer.start()
-	print(health_component.current_health)
 	
 
 # Supossed to be called to update the health bar component

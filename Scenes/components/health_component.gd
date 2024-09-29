@@ -30,5 +30,6 @@ func get_health_percent() -> float:
 
 func check_death() -> void:
 	if current_health == 0:
+		print("dead")
 		died.emit()
 		owner.queue_free()
