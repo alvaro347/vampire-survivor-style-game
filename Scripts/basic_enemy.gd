@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 
-const MAX_SPEED = 40
+# const MAX_SPEED = 40
 var direction : Vector2		# Direction of the enemy
+@export var health : float = Globals.enemies.basic_enemy.health
 @onready var player : Node2D = get_tree().get_first_node_in_group("player")
-@onready var health_component : HealthComponent = $HealthComponent
-@export var health : float = 10.0
 @onready var visuals = $Visuals
+@onready var velocity_component: Node = $VelocityComponent
 # @export var damage: float = Globals.enemies.basic_enemy.damage
 # @onready var player : Node2D = get_node("/root/Main/Player")
 # @onready var player : Node2D = %Player
@@ -25,12 +25,17 @@ var direction : Vector2		# Direction of the enemy
 
 # NOTE: Use physics process since it's meant for movement
 func _physics_process(delta: float) -> void:
-	if player == null:
-		print("Player null")
-		return
-	direction = global_position.direction_to(player.global_position)	# It seems that this vector is normalized
-	velocity = direction * MAX_SPEED
-	move_and_slide()
+	velocity_component.accelerate_to_player()
+	velocity_component.move(self)
+
+	# if player == null:
+	# 	print("Player null")
+	# 	return
+
+	# direction = global_position.direction_to(player.global_position)	# It seems that this vector is normalized
+	# velocity = direction * MAX_SPEED
+	# move_and_slide()
+
 	var move_sign = sign(velocity.x)
 	if move_sign != 0:
 		visuals.scale = Vector2(-move_sign, 1)

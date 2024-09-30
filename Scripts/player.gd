@@ -12,7 +12,7 @@ class_name Player
 const MAX_SPEED: float = 150
 const ACCELERATION_SMOOTHING: float = 25
 
-var health: float = 10.0
+var health: float = Globals.player.health
 var number_colliding_bodies: int = 0
 # var current_health: float
 

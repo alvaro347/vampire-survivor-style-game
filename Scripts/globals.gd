@@ -1,11 +1,18 @@
 extends Node
 
-@export var max_health: float = 100
-@export var enemies = {
+@export var enemies: Dictionary = {
 	basic_enemy = {
 		health = 10,
 		damage = 5
+	},
+	wizard_enemy = {
+	health = 30,
+	damage = 5
 	}
+}
+
+@export var player: Dictionary = {
+	health = 10,
 }
 
 @export var weapons = {
