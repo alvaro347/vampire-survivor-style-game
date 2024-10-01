@@ -30,10 +30,3 @@ enum Enemies {
 	BASIC,
 	SLIME
 }
-
-# const BASIC = {
-	# health = 50 	# NOTE: It seems that enums are only int values. it's not a dictionary
-# }
-
-# @export var enemies := Enemies
-# @export var weapon1 := Weapon.BASIC_SWORD
