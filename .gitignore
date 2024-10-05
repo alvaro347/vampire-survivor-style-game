@@ -5,4 +5,5 @@ assets/
 .vscode/
 addons/
 .vscode
-.assets
+/assets
+assets/Tiles

@@ -100,7 +100,7 @@ autoplay = "walk"
 current_health = 10.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_16txx")]
-drop_percent = 0.35
+drop_percent = 0.574
 health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("4_vcacl")]
