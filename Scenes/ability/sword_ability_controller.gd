@@ -3,7 +3,8 @@ extends Node
 
 const MAX_RANGE: int = 150
 var base_wait_time: float
-var damage : float = 5.0
+var base_damage : float = 5.0
+var additional_damage_percent = 1
 @export var sword_ability : PackedScene
 @onready var player : Node2D = get_tree().get_first_node_in_group("player")
 # NOTE: This is the same as exporting this variable as a PackedScene and adding the reference in the inspector. We don't need @onready for this case since it's implied in preload.
@@ -38,7 +39,7 @@ func spawn_sword() -> void:
 	var sword_instance : SwordAbility = sword_ability.instantiate()
 	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	foreground_layer.add_child(sword_instance)
-	sword_instance.hitbox_component.damage = damage
+	sword_instance.hitbox_component.damage = base_damage * additional_damage_percent
 	# NOTE: To add a random radious away. Tau is 2x pi. Randomize the rotaion of this vector from 0 to 360 by offset of 4
 	sword_instance.global_position = enemies[0].global_position + Vector2.RIGHT.rotated(randf_range(0,TAU)) * 4
 	# NOTE: We can angle towards the enemy this way. (To -> FROM for calculations). Then set the rotation to that value
@@ -48,9 +49,10 @@ func spawn_sword() -> void:
 
 # NOTE: Chanage the ability upgrade rate, in this case the sword
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
-	if upgrade.id != "sword_rate":
-		return
-	var percent_reduciton = current_upgrades["sword_rate"]["quantity"] * 0.5
-	$SwordTimer.wait_time = base_wait_time * (1 - percent_reduciton)
-	$SwordTimer.start()
+	if upgrade.id == "sword_rate":
+		var percent_reduciton = current_upgrades["sword_rate"]["quantity"] * 0.5
+		$SwordTimer.wait_time = base_wait_time * (1 - percent_reduciton)
+		$SwordTimer.start()
+	elif upgrade.id == "sword_damage":
+		additional_damage_percent = 1 + (current_upgrades["sword_damage"]["quantity"] * 0.15)
 	

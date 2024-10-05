@@ -3,14 +3,22 @@ extends Node
 
 # NOTE: Manage the data of the upgrades, listing it in a dicitonary.
 
-
-@export var upgrade_pool: Array[AbilityUpgrade]
 @export var experience_manager: Node
 @export var upgrade_screen_scene: PackedScene
+
 var current_upgrades: Dictionary = {}
+var upgrade_pool: WeightedTable = WeightedTable.new()
+
+var upgrade_axe = preload("res://resources/upgrades/axe.tres")
+var upgrade_axe_damage = preload("res://resources/upgrades/axe_damage.tres")
+var upgrade_sword_rate = preload("res://resources/upgrades/sword_rate.tres")
+var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres")
 
 
 func _ready() -> void:
+	upgrade_pool.add_item(upgrade_axe, 10)
+	upgrade_pool.add_item(upgrade_sword_rate, 10)
+	upgrade_pool.add_item(upgrade_sword_damage, 10)
 	experience_manager.level_up.connect(on_level_up)
 
 
@@ -27,21 +35,23 @@ func apply_upgrade(upgrade: AbilityUpgrade) -> void:
 	if upgrade.max_quantity > 0:
 		var current_quantity: int = current_upgrades[upgrade.id]["quantity"]
 		if current_quantity == upgrade.max_quantity:
-			upgrade_pool = upgrade_pool.filter(func (pool_upgrade: AbilityUpgrade): return pool_upgrade.id != upgrade.id)
-	
+			upgrade_pool.remove_item(upgrade)
+	update_upgrade_pool(upgrade)
 	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
 
 
+func update_upgrade_pool(chosen_upgrade: AbilityUpgrade) -> void:
+	if chosen_upgrade.id == upgrade_axe.id:
+		upgrade_pool.add_item(upgrade_axe_damage, 10)
+
+
 func pick_upgrades() -> Array:
-	var chosen_upgrade: AbilityUpgrade
 	var chosen_upgrades: Array[AbilityUpgrade] = []
-	var filtered_upgrades: Array[AbilityUpgrade] = upgrade_pool.duplicate()
 	for i in 2:
-		if filtered_upgrades.size() == 0:
+		if upgrade_pool.items.size() == chosen_upgrades.size():
 			break
-		chosen_upgrade = filtered_upgrades.pick_random()
+		var chosen_upgrade = upgrade_pool.pick_item(chosen_upgrades)
 		chosen_upgrades.append(chosen_upgrade)
-		filtered_upgrades = filtered_upgrades.filter(func(upgrade: AbilityUpgrade): return upgrade.id != chosen_upgrade.id)
 	return chosen_upgrades
 
 
