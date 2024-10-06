@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cc6b08w57e7ci"]
+[gd_scene load_steps=12 format=3 uid="uid://cc6b08w57e7ci"]
 
 [ext_resource type="Texture2D" uid="uid://cgmym7o57ju4v" path="res://assets/player/tile_0096.png" id="1_id6xp"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ww3w3"]
@@ -91,9 +91,6 @@ _data = {
 "walk": SubResource("Animation_8pyan")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltodl"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vkq3"]
 bg_color = Color(0.1566, 0.87, 0.69165, 1)
 border_width_left = 2
@@ -139,7 +136,6 @@ offset_top = -17.0
 offset_right = 16.0
 offset_bottom = -11.0
 pivot_offset = Vector2(16, 3)
-theme_override_styles/background = SubResource("StyleBoxFlat_ltodl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1vkq3")
 max_value = 1.0
 value = 0.5
