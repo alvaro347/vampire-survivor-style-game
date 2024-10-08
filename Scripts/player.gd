@@ -8,16 +8,16 @@ class_name Player
 @onready var abilities = $Abilities
 @onready var animation_player = $AnimationPlayer
 @onready var visuals = $Visuals
-
-const MAX_SPEED: float = 150
-const ACCELERATION_SMOOTHING: float = 25
+@onready var velocity_component = $VelocityComponent
 
 var health: float = Globals.player.health
 var number_colliding_bodies: int = 0
+var base_speed = 0.0
 # var current_health: float
 
 
 func _ready() -> void:
+	base_speed = velocity_component.max_speed
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	# current_health = Globals.max_health
@@ -31,10 +31,8 @@ func _process(delta: float) -> void:
 	var movement_vector: Vector2 = get_movement_vector()
 	# We need to normalize the vector not get a speed larger than 1
 	var direction: Vector2 = movement_vector.normalized()
-	var target_velocity: Vector2 = direction * MAX_SPEED
-	# NOTE: LERP is linear interpolation
-	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
-	move_and_slide()
+	velocity_component.accelerate_in_direction(direction)
+	velocity_component.move(self)
 	if movement_vector.x != 0 || movement_vector.y != 0:
 		animation_player.play("walk")
 	else:
@@ -84,7 +82,8 @@ func on_health_changed() -> void:
 
 
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-	if not ability_upgrade is Ability:
-		return
-	var ability: Ability = ability_upgrade
-	abilities.add_child(ability.ability_controller_scene.instantiate())
+	if ability_upgrade is Ability:
+		var ability: Ability = ability_upgrade
+		abilities.add_child(ability.ability_controller_scene.instantiate())
+	elif ability_upgrade.id == "player_speed":
+		velocity_component.max_speed = base_speed + (base_speed * current_upgrades["player_speed"]["quantity"] * 0.1)
