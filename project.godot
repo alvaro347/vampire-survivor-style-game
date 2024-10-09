@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameEvents="*res://Scenes/manager/game_events.tscn"
 Globals="*res://Scripts/globals.gd"
+MusicPlayer="*res://Scenes/AutoLoad/music_player.tscn"
 
 [debug]
 

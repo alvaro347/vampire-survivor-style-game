@@ -13,9 +13,9 @@ var direction : Vector2		# Direction of the enemy
 # var player = preload("res://Scenes/player.tscn")
 
 
-# func _ready() -> void:
-	# $HurtBoxComponent.area_entered.connect(on_area_entered)
-	# pass # Replace with function body.
+func _ready() -> void:
+	$HurtBoxComponent.hit.connect(on_hit)
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,3 +51,7 @@ func _physics_process(delta: float) -> void:
 
 # func on_area_entered(ohter_area: Area2D):
 # 	health_component.take_damage(100)
+
+
+func on_hit():
+	$HitRandomAudioPlayerComponent.play_random()

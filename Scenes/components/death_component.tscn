@@ -1,7 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://c42wpkrl4dcng"]
+[gd_scene load_steps=15 format=3 uid="uid://c42wpkrl4dcng"]
 
 [ext_resource type="Script" path="res://Scenes/components/death_component.gd" id="1_kpgbn"]
 [ext_resource type="Texture2D" uid="uid://d0ncbnu0m31nj" path="res://assets/basicenemy/tile_0124.png" id="1_n2h37"]
+[ext_resource type="PackedScene" uid="uid://ctrlltqcq3hql" path="res://Scenes/components/random_stream_player_2d_component.tscn" id="2_4fgc8"]
+[ext_resource type="AudioStream" uid="uid://descbmr1jsa3q" path="res://assets/audio/footstep_carpet_000.ogg" id="3_42eja"]
+[ext_resource type="AudioStream" uid="uid://ci2hbaxrs5vog" path="res://assets/audio/footstep_carpet_001.ogg" id="4_e5n3o"]
+[ext_resource type="AudioStream" uid="uid://tytbkiays1yq" path="res://assets/audio/footstep_carpet_002.ogg" id="5_1taav"]
+[ext_resource type="AudioStream" uid="uid://c375xhd5o21bs" path="res://assets/audio/footstep_carpet_003.ogg" id="6_w0nhe"]
+[ext_resource type="AudioStream" uid="uid://bef8eyom2fu3c" path="res://assets/audio/footstep_carpet_004.ogg" id="7_0ekrb"]
 
 [sub_resource type="Animation" id="Animation_8a3no"]
 length = 0.001
@@ -73,6 +79,11 @@ scale_curve = SubResource("CurveTexture_lk815")
 
 [node name="DeathComponent" type="Node2D"]
 script = ExtResource("1_kpgbn")
+
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("2_4fgc8")]
+position = Vector2(0, 4)
+max_distance = 300.0
+streams = Array[AudioStream]([ExtResource("3_42eja"), ExtResource("4_e5n3o"), ExtResource("5_1taav"), ExtResource("6_w0nhe"), ExtResource("7_0ekrb")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

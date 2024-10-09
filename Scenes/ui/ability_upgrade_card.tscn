@@ -1,6 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://c483dqpe43epg"]
+[gd_scene load_steps=21 format=3 uid="uid://c483dqpe43epg"]
 
 [ext_resource type="Script" path="res://Scenes/ui/ability_upgrade_card.gd" id="1_srgtg"]
+[ext_resource type="PackedScene" uid="uid://seme10rjusxv" path="res://Scenes/components/random_stream_player_component.tscn" id="2_ybqce"]
+[ext_resource type="AudioStream" uid="uid://dx48vqp5fxlrw" path="res://assets/audio/switch1.ogg" id="3_sb2ql"]
+[ext_resource type="AudioStream" uid="uid://ckl27dhq8afy8" path="res://assets/audio/switch2.ogg" id="4_i5e6g"]
+[ext_resource type="AudioStream" uid="uid://cd1e3h6kcmfal" path="res://assets/audio/switch3.ogg" id="5_morbj"]
+[ext_resource type="AudioStream" uid="uid://dd18l5v45b824" path="res://assets/audio/switch4.ogg" id="6_tdbkm"]
+[ext_resource type="AudioStream" uid="uid://dibwb30e68vcn" path="res://assets/audio/switch5.ogg" id="7_v7duy"]
+[ext_resource type="AudioStream" uid="uid://dp1o5syd2n7g2" path="res://assets/audio/switch6.ogg" id="8_yarpm"]
+[ext_resource type="AudioStream" uid="uid://0ru1kqudj5bo" path="res://assets/audio/switch7.ogg" id="9_k050i"]
+[ext_resource type="AudioStream" uid="uid://d03kp1gcyjxjn" path="res://assets/audio/switch8.ogg" id="10_bpb8k"]
+[ext_resource type="AudioStream" uid="uid://onmhuis7kyd6" path="res://assets/audio/switch9.ogg" id="11_xxb2r"]
+[ext_resource type="AudioStream" uid="uid://c8fviktwhdr7a" path="res://assets/audio/switch10.ogg" id="12_lfgu8"]
 
 [sub_resource type="Animation" id="Animation_h45ca"]
 length = 0.001
@@ -115,6 +126,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, -0.174533, 0.0872665]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ClickPlayerComponent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1bmec"]
 _data = {
@@ -155,6 +180,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, -0.0872665, 0.0872665, 0.0]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HoverPlayerComponent")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7oo0f"]
 _data = {
@@ -166,6 +205,13 @@ _data = {
 custom_minimum_size = Vector2(150, 150)
 pivot_offset = Vector2(75, 75)
 script = ExtResource("1_srgtg")
+
+[node name="HoverPlayerComponent" parent="." instance=ExtResource("2_ybqce")]
+volume_db = -8.0
+streams = Array[AudioStream]([ExtResource("3_sb2ql"), ExtResource("4_i5e6g"), ExtResource("5_morbj"), ExtResource("6_tdbkm"), ExtResource("7_v7duy"), ExtResource("8_yarpm"), ExtResource("9_k050i"), ExtResource("10_bpb8k"), ExtResource("11_xxb2r"), ExtResource("12_lfgu8")])
+
+[node name="ClickPlayerComponent" parent="." instance=ExtResource("2_ybqce")]
+streams = Array[AudioStream]([ExtResource("3_sb2ql"), ExtResource("4_i5e6g"), ExtResource("5_morbj"), ExtResource("6_tdbkm"), ExtResource("7_v7duy"), ExtResource("8_yarpm"), ExtResource("9_k050i"), ExtResource("10_bpb8k"), ExtResource("11_xxb2r"), ExtResource("12_lfgu8")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -79,6 +79,7 @@ func on_damage_inerval_timer_timeout() -> void:
 
 
 func on_health_changed() -> void:
+	$HitRandomAudioPlayerComponent.play_random()
 	GameEvents.emit_player_damage()
 	update_health_display()
 
