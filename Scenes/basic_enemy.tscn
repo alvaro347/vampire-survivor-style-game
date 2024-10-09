@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://h45jf7xqhim"]
+[gd_scene load_steps=17 format=3 uid="uid://h45jf7xqhim"]
 
 [ext_resource type="Script" path="res://Scripts/basic_enemy.gd" id="1_4f1ta"]
 [ext_resource type="Texture2D" uid="uid://d0ncbnu0m31nj" path="res://assets/basicenemy/tile_0124.png" id="2_1gcmg"]
 [ext_resource type="PackedScene" uid="uid://daytigpelgvq6" path="res://Scenes/components/health_component.tscn" id="2_fhmck"]
+[ext_resource type="AudioStream" uid="uid://descbmr1jsa3q" path="res://assets/audio/footstep_carpet_000.ogg" id="2_kljq4"]
 [ext_resource type="PackedScene" uid="uid://dey2jnln07lo2" path="res://Scenes/components/vial_drop_component.tscn" id="3_16txx"]
 [ext_resource type="PackedScene" uid="uid://c42wpkrl4dcng" path="res://Scenes/components/death_component.tscn" id="4_81r28"]
 [ext_resource type="PackedScene" uid="uid://cou3tjsnumi7" path="res://Scenes/components/hurt_box_component.tscn" id="4_v7q2l"]
@@ -95,6 +96,11 @@ libraries = {
 "": SubResource("AnimationLibrary_p136x")
 }
 autoplay = "walk"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 4)
+stream = ExtResource("2_kljq4")
+max_distance = 300.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_fhmck")]
 current_health = 10.0

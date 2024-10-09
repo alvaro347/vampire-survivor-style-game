@@ -10,6 +10,7 @@ class_name Player
 @onready var visuals = $Visuals
 @onready var velocity_component = $VelocityComponent
 
+
 var health: float = Globals.player.health
 var number_colliding_bodies: int = 0
 var base_speed = 0.0
@@ -78,6 +79,7 @@ func on_damage_inerval_timer_timeout() -> void:
 
 
 func on_health_changed() -> void:
+	GameEvents.emit_player_damage()
 	update_health_display()
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://j6612yf2bv74"]
+[gd_scene load_steps=12 format=4 uid="uid://j6612yf2bv74"]
 
 [ext_resource type="PackedScene" uid="uid://c6tjtw2xuuwxh" path="res://Scenes/manager/enemy_manager.tscn" id="1_71mlh"]
 [ext_resource type="PackedScene" uid="uid://cq0mg7ewcsug3" path="res://Scenes/ui/arena_time_ui.tscn" id="1_bccd0"]
@@ -10,10 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://dotcomu7hyy1b" path="res://Scenes/ui/expirience_bar.tscn" id="2_sw865"]
 [ext_resource type="PackedScene" uid="uid://b1n68k2nytf17" path="res://Scenes/manager/arena_time_manager.tscn" id="3_1mill"]
 [ext_resource type="PackedScene" uid="uid://rn7kqawilkeo" path="res://Scenes/manager/upgrade_manager.tscn" id="5_h3mee"]
+[ext_resource type="PackedScene" uid="uid://2g21mq2qnew" path="res://Scenes/ui/vignette.tscn" id="11_7c702"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_s50br")
 end_screen_scene = ExtResource("2_0g01l")
+
+[node name="Vignette" parent="." instance=ExtResource("11_7c702")]
 
 [node name="ArenaTimeUI" parent="." instance=ExtResource("1_bccd0")]
 
