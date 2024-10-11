@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=4 uid="uid://bms7ut7e1h3nm"]
+[gd_scene load_steps=5 format=4 uid="uid://bms7ut7e1h3nm"]
 
 [ext_resource type="Script" path="res://Scenes/ui/options_menu.gd" id="1_34khg"]
 [ext_resource type="TileSet" uid="uid://6swbgl8hbwcb" path="res://resources/tilset.tres" id="2_q3pvi"]
+[ext_resource type="PackedScene" uid="uid://2g21mq2qnew" path="res://Scenes/ui/vignette.tscn" id="2_y4aul"]
 [ext_resource type="PackedScene" uid="uid://oxbmk4pfqn67" path="res://Scenes/ui/sound_button.tscn" id="3_pb6vl"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_34khg")
+
+[node name="Vignette" parent="." instance=ExtResource("2_y4aul")]
+layer = 3
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(319, 179)
@@ -44,6 +48,7 @@ theme_override_constants/separation = 24
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_type_variation = &"BlueOutlineLabel"
 theme_override_font_sizes/font_size = 32
 text = "Options
 "
@@ -57,6 +62,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxOptionContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "SFX Volume
 "
 
@@ -71,6 +77,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicOptionContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "Music Volume
 "
 
@@ -85,6 +92,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "Window Mode
 "
 
