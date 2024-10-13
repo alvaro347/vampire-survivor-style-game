@@ -74,8 +74,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p136x"]
 _data = {
-"RESET": SubResource("Animation_f308v"),
-"walk": SubResource("Animation_sl2yn")
+&"RESET": SubResource("Animation_f308v"),
+&"walk": SubResource("Animation_sl2yn")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_giq8e"]
@@ -98,7 +98,7 @@ script = ExtResource("1_4f1ta")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_p136x")
+&"": SubResource("AnimationLibrary_p136x")
 }
 autoplay = "walk"
 

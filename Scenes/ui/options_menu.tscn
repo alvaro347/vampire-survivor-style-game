@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=4 uid="uid://bms7ut7e1h3nm"]
 
 [ext_resource type="Script" path="res://Scenes/ui/options_menu.gd" id="1_34khg"]
+[ext_resource type="PackedScene" uid="uid://2g21mq2qnew" path="res://Scenes/ui/vignette.tscn" id="2_8yrfk"]
 [ext_resource type="TileSet" uid="uid://6swbgl8hbwcb" path="res://resources/tilset.tres" id="2_q3pvi"]
-[ext_resource type="PackedScene" uid="uid://2g21mq2qnew" path="res://Scenes/ui/vignette.tscn" id="2_y4aul"]
 [ext_resource type="PackedScene" uid="uid://oxbmk4pfqn67" path="res://Scenes/ui/sound_button.tscn" id="3_pb6vl"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_34khg")
 
-[node name="Vignette" parent="." instance=ExtResource("2_y4aul")]
-layer = 3
+[node name="Vignette" parent="." instance=ExtResource("2_8yrfk")]
+layer = 4
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(319, 179)
