@@ -21,6 +21,7 @@ GameEvents="*res://Scenes/manager/game_events.tscn"
 Globals="*res://Scripts/globals.gd"
 MusicPlayer="*res://Scenes/AutoLoad/music_player.tscn"
 ScreenTransition="*res://Scenes/AutoLoad/screen_transition.tscn"
+MetaProgression="*res://Scenes/AutoLoad/meta_progression.tscn"
 
 [debug]
 

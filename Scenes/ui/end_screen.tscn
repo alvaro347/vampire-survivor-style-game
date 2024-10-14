@@ -57,8 +57,8 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a1jbp"]
 _data = {
 &"RESET": SubResource("Animation_pe4kr"),
-&"in": SubResource("Animation_o4lr8"),
-&"out": SubResource("Animation_y230o")
+&"out": SubResource("Animation_y230o"),
+&"in": SubResource("Animation_o4lr8")
 }
 
 [node name="EndScreen" type="CanvasLayer"]
