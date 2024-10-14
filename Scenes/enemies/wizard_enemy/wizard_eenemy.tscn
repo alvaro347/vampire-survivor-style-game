@@ -115,8 +115,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ckcai"]
 _data = {
-&"RESET": SubResource("Animation_kxp5e"),
-&"walk": SubResource("Animation_2g47u")
+&"walk": SubResource("Animation_2g47u"),
+&"RESET": SubResource("Animation_kxp5e")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_st48n"]

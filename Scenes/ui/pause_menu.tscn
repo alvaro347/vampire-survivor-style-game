@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/ui/pause_menu.gd" id="1_36lgw"]
 [ext_resource type="PackedScene" uid="uid://oxbmk4pfqn67" path="res://Scenes/ui/sound_button.tscn" id="4_jwth1"]
 
-[sub_resource type="Animation" id="Animation_bhsdo"]
-resource_name = "in"
+[sub_resource type="Animation" id="Animation_36lgw"]
+resource_name = "default"
 length = 0.15
 step = 0.0
 tracks/0/type = "value"
@@ -35,8 +35,8 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_36lgw"]
-resource_name = "default"
+[sub_resource type="Animation" id="Animation_bhsdo"]
+resource_name = "in"
 length = 0.15
 step = 0.0
 tracks/0/type = "value"

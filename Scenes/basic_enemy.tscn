@@ -74,8 +74,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p136x"]
 _data = {
-&"RESET": SubResource("Animation_f308v"),
-&"walk": SubResource("Animation_sl2yn")
+&"walk": SubResource("Animation_sl2yn"),
+&"RESET": SubResource("Animation_f308v")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_giq8e"]
