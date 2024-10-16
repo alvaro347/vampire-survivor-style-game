@@ -12,6 +12,8 @@ config_version=5
 
 config/name="03UdemySurvivor"
 run/main_scene="res://Scenes/ui/main_menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="VampireSurvivorSave"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
