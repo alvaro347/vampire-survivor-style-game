@@ -10,7 +10,7 @@ func _ready() -> void:
 	tween.tween_property(panel_container, "scale", Vector2.ONE, 0.3)\
 	.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	get_tree().paused = true
-	%RestartButton.pressed.connect(on_restart_button_pressed)
+	%ContinueButton.pressed.connect(on_continue_button_pressed)
 	%QuitButton.pressed.connect(on_quit_button_pressed)
 
 
@@ -28,7 +28,7 @@ func play_jingle(defeat: bool = false):
 
 
 # Remove current main and reload main again
-func on_restart_button_pressed() -> void:
+func on_continue_button_pressed() -> void:
 	ScreenTransition.transition()
 	await ScreenTransition.transition_halfway
 	get_tree().paused = false
@@ -37,4 +37,7 @@ func on_restart_button_pressed() -> void:
 
 # Quit the main file and close our game
 func on_quit_button_pressed() -> void:
-	get_tree().quit()
+	ScreenTransition.transition()
+	ScreenTransition.transition_to_scene("res://Scenes/ui/main_menu.gd")
+	await ScreenTransition.transition_halfway
+	get_tree().paused = false

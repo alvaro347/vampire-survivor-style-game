@@ -34,12 +34,12 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_7mbjp"]
 resource_name = "default"
 length = 0.4
-step = 0.0625
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("ColorRect:material:shader_parameter/percent")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
@@ -83,8 +83,8 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7btrh"]
 shader = ExtResource("1_7mbjp")
 shader_parameter/transition_texture = ExtResource("2_dr6qw")
-shader_parameter/percent = null
 shader_parameter/transition_color = Color(0.247059, 0.14902, 0.192157, 1)
+shader_parameter/percent = null
 
 [node name="ScreenTransition" type="CanvasLayer"]
 process_mode = 3
